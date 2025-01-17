@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <title>Interval Timer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+    <header>
+        <div class="music-icon" onclick="openAudioPlayer()">
+            <svg class="music-icon" width="22px" height="22px" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                      <g transform="matrix(0.775772,-0.354042,0.189844,0.415985,-1.88162,14.5167)">
+                          <path d="M9.644,10.131C11.215,10.131 12.589,11.025 13.453,12.203L14.093,13.277L14.642,14.775L14.892,16.046L14.985,17.472L14.892,18.897L14.642,20.168L14.093,21.667L13.453,22.74C12.589,23.918 11.215,24.812 9.644,24.812C8.073,24.812 6.699,23.918 5.835,22.74L5.195,21.667L4.646,20.168L4.396,18.897L4.303,17.472L4.396,16.046L4.646,14.775L5.195,13.277L5.835,12.203C6.699,11.025 8.073,10.131 9.644,10.131ZM9.644,14.505C8.649,14.505 7.767,14.988 7.22,15.733C6.862,16.221 6.649,16.821 6.649,17.472C6.649,18.122 6.862,18.722 7.22,19.21C7.767,19.956 8.649,20.438 9.644,20.438C10.639,20.438 11.521,19.956 12.068,19.21C12.426,18.722 12.639,18.122 12.639,17.472C12.639,16.821 12.426,16.221 12.068,15.733C11.521,14.988 10.639,14.505 9.644,14.505Z"></path>
+                      </g>
+                      <g>
+                          <g transform="matrix(1.03423,0,0,0.978473,-0.218172,0.487269)">
+                              <path d="M11.819,15.854L11.814,3.666L17.615,1.546" style="fill:none;stroke-width:1.99px;"></path>
+                          </g>
+                          <g transform="matrix(0.895682,-0.00213523,-0.00239943,1.00088,2.26799,1.01899)">
+                              <path d="M11.984,7.459L17.602,5.616" style="fill:none;stroke-width:2.11px;"></path>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+        </div>
+    </header>
+    <div class="container">
+        <div class="round-counter">
+            <div class="round-label">ROUND</div>
+            <div><span id="roundNumber">1</span></div>
+        </div>
+        <div class="timer" id="timer">00</div>
+        <div class="controls">
+            <button id="playPause" class="control-btn">
+                <i class="fas fa-play"></i>
+            </button>
+            <button id="restart" class="control-btn">
+                <i class="fas fa-redo"></i>
+            </button>
+        </div>
+    </div>
+    <video 
+        src="loop.mov" 
+        autoplay 
+        loop 
+        muted 
+        playsinline 
+        style="opacity: 0; position: absolute;"
+    ></video>
+    <script src="script.js"></script>
+</body>
+</html> 
