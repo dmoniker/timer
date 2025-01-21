@@ -63,8 +63,11 @@ function startTimer() {
                     wakeLock.release().then(() => {
                         wakeLock = null;
                         console.log('Wake Lock released - timer finished');
+                    }).catch(err => {
+                        console.log('Error releasing wake lock:', err);
                     });
                 }
+                wakeLock = null;
             } else {
                 currentRound++;
                 timeLeft = 60;
