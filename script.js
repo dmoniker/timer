@@ -36,10 +36,19 @@ function togglePlayPause() {
         isPlaying = false;
         clearInterval(timerId);
         playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        
+        // Ensure complete wake lock release when paused
         if (wakeLock) {
-            wakeLock.release().then(() => {
-                wakeLock = null;
-            });
+            wakeLock.release()
+                .then(() => {
+                    console.log('Wake Lock released - timer paused');
+                })
+                .catch(err => {
+                    console.log('Error releasing wake lock:', err);
+                })
+                .finally(() => {
+                    wakeLock = null;  // Always ensure wake lock is nullified
+                });
         }
     } else {
         isPlaying = true;
@@ -56,18 +65,24 @@ function startTimer() {
 
         if (timeLeft === 0) {
             if (currentRound === 40) {
+                // Stop everything when timer completes
                 clearInterval(timerId);
                 isPlaying = false;
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                
+                // Ensure complete wake lock release
                 if (wakeLock) {
-                    wakeLock.release().then(() => {
-                        wakeLock = null;
-                        console.log('Wake Lock released - timer finished');
-                    }).catch(err => {
-                        console.log('Error releasing wake lock:', err);
-                    });
+                    wakeLock.release()
+                        .then(() => {
+                            console.log('Wake Lock released - timer finished');
+                        })
+                        .catch(err => {
+                            console.log('Error releasing wake lock:', err);
+                        })
+                        .finally(() => {
+                            wakeLock = null;  // Always ensure wake lock is nullified
+                        });
                 }
-                wakeLock = null;
             } else {
                 currentRound++;
                 timeLeft = 60;
